@@ -2,15 +2,24 @@
 
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 APP="$1"; IMAGE="dokku/$APP"
-echo "-----> Installing wkhtmltox ..."
+echo "-----> Installing pdiocertificate libs ..."
 COMMAND=$(cat <<EOF
-apt-get -y update 
-apt-get install -y wget xfonts-base xfonts-75dpi libssl-dev openssl
-cd /tmp && wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-cd /tmp && tar xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-mv /tmp/wkhtmltox /opt/
-cd /usr/local/bin && ln -s /opt/wkhtmltox/bin/wkhtmltopdf && ln -s /opt/wkhtmltox/bin/wkhtmltoimage
-echo "-----> wkhtmltox installed!"
+apt-get install -y -q --no-install-recommends \
+    openjdk-11-jdk \
+    ghostscript \
+    poppler-utils \
+    fontconfig \
+    libfontconfig1-dev \
+    libfreetype6-dev \
+    libx11-dev \
+    libxext-dev \
+    libxrender-dev \
+    xfonts-base \
+    xfonts-75dpi \
+    fonts-freefont-ttf \
+    fonts-liberation \
+   ttf-dejavu
+echo "-----> pdiocertificate installed!"
 sleep 1 # wait so that docker run has not exited before docker attach
 EOF
 )
