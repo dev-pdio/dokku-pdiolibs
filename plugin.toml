@@ -1,4 +1,4 @@
 [plugin]
-description = "dokku pdiocertificate"
-version = "0.1.0"
+description = "dokku pdiolibs"
+version = "0.1.1"
 [plugin.config]
