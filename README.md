@@ -1,20 +1,15 @@
-# dokku-wkhtmltopdf
+# dokku-pdio-certificate
 
-dokku-wkhtmltopdf is an awesome plugin for [dokku][dokku] that properly installs the wkhtmltopdf into the docker instance.
-This plugin should fix the problems you may have when downloading wkhtmltopdf with ```apt-get``` for example by using another awesome plugin [dokku-apt][dokku-apt].
+dokku-pdio-certificate is single apt-get with essential libs to work certificate.
 
 ## Installation
 
 On your dokku server:
 ```sh
-# On 0.3.x
-git clone https://github.com/marlosirapuan/dokku-wkhtmltopdf /var/lib/dokku/plugins/dokku-wkhtmltopdf
-
-# On 0.4.x
-dokku plugin:install https://github.com/marlosirapuan/dokku-wkhtmltopdf.git wkhtmltopdf
+dokku plugin:install https://github.com/dev-pdio/dokku-pdio-certificate.git pdiocertificate
 ```
 
-All future deployments will have dokku-wkhtmltopdf installed.
+All future deployments will have dokku-pdio-certificate installed.
 
 ## License
 
