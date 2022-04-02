@@ -4,6 +4,7 @@ set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 APP="$1"; IMAGE="dokku/$APP"
 echo "-----> Installing pdiocertificate libs ..."
 COMMAND=$(cat <<EOF
+apt-get -y update
 apt-get install -y -q --no-install-recommends \
     openjdk-11-jdk \
     ghostscript \
