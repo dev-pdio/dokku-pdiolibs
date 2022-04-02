@@ -1,21 +1,21 @@
-# dokku-pdio-certificate
+# pdiolibs
 
-dokku-pdio-certificate is single apt-get with essential libs to work certificate.
+pdiolibs is a single apt-get with essential libs to work with certificates.
 
 ## Installation
 
 On your dokku server:
 ```sh
-dokku plugin:install https://github.com/dev-pdio/dokku-pdio-certificate.git pdiocertificate
+dokku plugin:install https://github.com/dev-pdio/dokku-pdiolibs.git pdiolibs
 ```
 
-All future deployments will have dokku-pdio-certificate installed.
+All future deployments will have pdiolibs installed.
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Matej Briškár
+Copyright (c) 2022 Pdio System
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
