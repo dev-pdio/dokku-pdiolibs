@@ -6,6 +6,8 @@ echo "-----> Installing pdiolibs libs ..."
 COMMAND=$(cat <<EOF
 apt-get -y update
 apt-get install -y -q --no-install-recommends openjdk-11-jdk ghostscript poppler-utils fontconfig libfontconfig1-dev libfreetype6-dev libx11-dev libxext-dev libxrender-dev xfonts-base xfonts-75dpi fonts-freefont-ttf fonts-liberation ttf-dejavu
+echo "/Arial << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttcorefonts/Arial.ttf) /SubfontID 0 /CSI [(Identity) 0] >> ;" >> /usr/share/ghostscript/9.26/Resource/Init/cidfmap
+echo "/Arial,Bold << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttcorefonts/Arial_Bold.ttf) /SubfontID 0 /CSI [(Identity) 0] >> ;" >> /usr/share/ghostscript/9.26/Resource/Init/cidfmap
 echo "-----> pdiolibs installed!"
 sleep 1 # wait so that docker run has not exited before docker attach
 EOF
