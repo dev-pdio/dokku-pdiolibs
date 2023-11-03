@@ -12,6 +12,7 @@ echo "/Arial << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttcorefon
 echo "/Arial,Bold << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttcorefonts/Arial_Bold.ttf) /SubfontID 0 /CSI [(Identity) 0] >> ;" >> /usr/share/ghostscript/9.55.0/Resource/Init/cidfmap
 echo "[Finish] Enabling GhostScript Fonts..."
 echo "[Start] Enabling OpenSSL Legacy..."
+# Reference: https://stackoverflow.com/a/75227737
 sed -i '/^default = default_sect/a legacy = legacy_sect' /etc/ssl/openssl.cnf
 sed -i '/^\[default_sect\]/a activate = 1' /etc/ssl/openssl.cnf
 printf "[legacy_sect]\nactivate = 1" >> /etc/ssl/openssl.cnf
