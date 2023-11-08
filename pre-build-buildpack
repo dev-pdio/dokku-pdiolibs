@@ -13,7 +13,7 @@ echo "/Arial,Bold << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttco
 echo "[Finish] Enabling GhostScript Fonts..."
 echo "[Start] OpenSSL Certificate Legacy Setup..."
 # Gerar private key
-openssl pkcs12 -in /app/certificates/pdio_crt.pfx -nocerts -nodes -legacy -out /app/certificates/private.key
+openssl pkcs12 -in /app/certificates/pdio_crt.pfx -nocerts -nodes -legacy -out /app/certificates/private.key -password pass:$CERTIFICATE_PASSWORD
 # Gerar public key
 openssl rsa -in /app/certificates/private.key -pubout -out /app/certificates/public.key
 # Gerar certificate
