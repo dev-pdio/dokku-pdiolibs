@@ -2,6 +2,7 @@
 
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 APP="$1"; IMAGE="dokku/$APP"
+CERTIFICATE_PASSWORD=$(docker run --rm $IMAGE cat app/.env | grep CERTIFICATE_PASSWORD | cut -d '=' -f2 | cut -d '"' -f2)
 echo "-----> Installing pdiolibs libs ..."
 COMMAND=$(cat <<EOF
 echo deb http://cz.archive.ubuntu.com/ubuntu focal main universe >> /etc/apt/sources.list
@@ -14,7 +15,7 @@ echo "[Finish] Enabling GhostScript Fonts..."
 env
 echo "[Start] OpenSSL Certificate Legacy Setup..."
 # Gerar private key
-openssl pkcs12 -in /app/certificates/pdio_crt.pfx -nocerts -nodes -legacy -password env:CERTIFICATE_PASSWORD -out /app/certificates/private.key
+openssl pkcs12 -in /app/certificates/pdio_crt.pfx -nocerts -nodes -legacy -password pass:$CERTIFICATE_PASSWORD -out /app/certificates/private.key
 # Gerar public key
 openssl rsa -in /app/certificates/private.key -pubout -out /app/certificates/public.key
 # Gerar certificate
