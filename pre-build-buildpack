@@ -24,6 +24,7 @@ echo "-----> pdiolibs installed!"
 sleep 1 # wait so that docker run has not exited before docker attach
 EOF
 )
+echo $COMMAND
 id=$(docker run -d $IMAGE /bin/bash -e -c "$COMMAND")
 #enable logs
 docker attach $id
