@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+echo $APP
 APP="$1"; IMAGE="dokku/$APP"
+echo $APP
+echo $1
+echo $2
+echo $3
 CERTIFICATE_PASSWORD=$(docker run --rm $IMAGE cat app/.env | grep CERTIFICATE_PASSWORD | cut -d '=' -f2 | cut -d '"' -f2)
 echo "-----> Installing pdiolibs libs ..."
 COMMAND=$(cat <<EOF
