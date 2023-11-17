@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
-echo $APP
-APP="$1"; IMAGE="dokku/$APP"
+APP="$2"; IMAGE="dokku/$APP"
 echo $APP
 echo $1
 echo $2
