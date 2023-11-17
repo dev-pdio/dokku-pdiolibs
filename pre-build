@@ -11,7 +11,7 @@ echo "-----> Installing pdiolibs libs ..."
 COMMAND=$(cat <<EOF
 echo deb http://cz.archive.ubuntu.com/ubuntu focal main universe >> /etc/apt/sources.list
 apt-get -y update
-apt-get install -y -q --no-install-recommends ghostscript curl libssl1.0-dev openssl poppler-utils fontconfig libfontconfig1-dev libfreetype6-dev libx11-dev libxext-dev libxrender-dev xfonts-base xfonts-75dpi fonts-freefont-ttf fonts-liberation ttf-dejavu
+apt-get install -y -q --no-install-recommends ghostscript curl poppler-utils fontconfig libfontconfig1-dev libfreetype6-dev libx11-dev libxext-dev libxrender-dev xfonts-base xfonts-75dpi fonts-freefont-ttf fonts-liberation ttf-dejavu
 echo "[Start] Enabling GhostScript Fonts..."
 echo "/Arial << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttcorefonts/Arial.ttf) /SubfontID 0 /CSI [(Identity) 0] >> ;" >> /usr/share/ghostscript/9.55.0/Resource/Init/cidfmap
 echo "/Arial,Bold << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttcorefonts/Arial_Bold.ttf) /SubfontID 0 /CSI [(Identity) 0] >> ;" >> /usr/share/ghostscript/9.55.0/Resource/Init/cidfmap
