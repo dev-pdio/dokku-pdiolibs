@@ -2,7 +2,10 @@
 
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 APP="$2"; IMAGE="dokku/$APP"
-
+GS_VERSION="10.02.1"
+GS_PATH="/usr/share/ghostscript/$GS_VERSION/Resource/Init/cidfmap"
+IMAGE_MAGIC_VERSION="6"
+IMAGE_MAGIC_PATH="/etc/ImageMagick-$IMAGE_MAGIC_VERSION/policy.xml"
 CERTIFICATE_PASSWORD=$(docker run --rm $IMAGE cat /app/.env | grep CERTIFICATE_PASSWORD | cut -d '=' -f2 | cut -d '"' -f2)
 echo "-----> Installing pdiolibs libs ..."
 COMMAND=$(cat <<EOF
@@ -10,11 +13,9 @@ echo deb http://cz.archive.ubuntu.com/ubuntu noble main universe >> /etc/apt/sou
 apt update -y
 apt install -y -q --no-install-recommends ghostscript curl poppler-utils fontconfig libfontconfig1-dev libfreetype-dev libx11-dev libxext-dev libxrender-dev xfonts-base xfonts-75dpi fonts-freefont-ttf fonts-liberation fonts-dejavu
 echo "[Start] Enabling ImageMagick PDF read and write..."
-sed -i '/<\/policymap>/i \  \<policy domain="coder" rights="read | write" pattern="PDF" />' /etc/ImageMagick-6/policy.xml \
+sed -i '/<\/policymap>/i \  \<policy domain="coder" rights="read | write" pattern="PDF" />' "$IMAGE_MAGIC_PATH" \
 echo "[Finish] Enabling ImageMagick PDF read and write..."
 echo "[Start] Enabling GhostScript Fonts..."
-GS_VERSION="10.02.1"
-GS_PATH="/usr/share/ghostscript/$GS_VERSION/Resource/Init/cidfmap"
 echo "/Arial << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttcorefonts/Arial.ttf) /SubfontID 0 /CSI [(Identity) 0] >> ;" >> "$GS_PATH"
 echo "/Arial,Bold << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttcorefonts/Arial_Bold.ttf) /SubfontID 0 /CSI [(Identity) 0] >> ;" >> "$GS_PATH"
 echo "[Finish] Enabling GhostScript Fonts..."
