@@ -13,7 +13,7 @@ echo "[Start] Enabling ImageMagick PDF read and write..."
 sed -i '/<\/policymap>/i \  \<policy domain="coder" rights="read | write" pattern="PDF" />' /etc/ImageMagick-6/policy.xml \
 echo "[Finish] Enabling ImageMagick PDF read and write..."
 echo "[Start] Enabling GhostScript Fonts..."
-GS_VERSION=$(gs --version)
+GS_VERSION="10.02.1"
 GS_PATH="/usr/share/ghostscript/$GS_VERSION/Resource/Init/cidfmap"
 echo "/Arial << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttcorefonts/Arial.ttf) /SubfontID 0 /CSI [(Identity) 0] >> ;" >> "$GS_PATH"
 echo "/Arial,Bold << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttcorefonts/Arial_Bold.ttf) /SubfontID 0 /CSI [(Identity) 0] >> ;" >> "$GS_PATH"
