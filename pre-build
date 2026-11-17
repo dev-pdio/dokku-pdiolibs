@@ -13,7 +13,7 @@ echo deb http://cz.archive.ubuntu.com/ubuntu noble main universe >> /etc/apt/sou
 apt update -y
 apt install -y -q --no-install-recommends ghostscript curl poppler-utils fontconfig libfontconfig1-dev libfreetype-dev libx11-dev libxext-dev libxrender-dev xfonts-base xfonts-75dpi fonts-freefont-ttf fonts-liberation fonts-dejavu
 echo "[Start] Enabling ImageMagick PDF read and write..."
-sed -i '/<\/policymap>/i \  \<policy domain="coder" rights="read | write" pattern="PDF" />' "$IMAGE_MAGIC_PATH" \
+sed -i '/<\/policymap>/i \  \<policy domain="coder" rights="read | write" pattern="PDF" />' "$IMAGE_MAGIC_PATH"
 echo "[Finish] Enabling ImageMagick PDF read and write..."
 echo "[Start] Enabling GhostScript Fonts..."
 echo "/Arial << /FileType /TrueType /Path (/usr/share/fonts/truetype/msttcorefonts/Arial.ttf) /SubfontID 0 /CSI [(Identity) 0] >> ;" >> "$GS_PATH"
